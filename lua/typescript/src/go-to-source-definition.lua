@@ -1,12 +1,12 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local ____execute_2Dcommand = require("typescript.execute-command")
+local ____execute_2Dcommand = require("typescript.src.execute-command")
 local executeCommand = ____execute_2Dcommand.executeCommand
-local ____methods = require("typescript.types.methods")
+local ____methods = require("typescript.src.types.methods")
 local Methods = ____methods.Methods
-local ____workspace_2Dcommands = require("typescript.types.workspace-commands")
+local ____workspace_2Dcommands = require("typescript.src.types.workspace-commands")
 local WorkspaceCommands = ____workspace_2Dcommands.WorkspaceCommands
-local ____utils = require("typescript.utils")
+local ____utils = require("typescript.src.utils")
 local getClient = ____utils.getClient
 local resolveHandler = ____utils.resolveHandler
 ____exports.goToSourceDefinition = function(winnr, ____bindingPattern0)

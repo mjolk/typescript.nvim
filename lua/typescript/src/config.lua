@@ -23,7 +23,6 @@ local function __TS__New(target, ...)
     instance:____constructor(...)
     return instance
 end
-
 -- End of Lua Library inline imports
 local ____exports = {}
 local Config = __TS__Class()

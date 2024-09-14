@@ -1,6 +1,6 @@
 /** @noSelf **/
 declare module "lspconfig" {
-  namespace tsserver {
+  namespace ts_ls {
     const setup: (options: NvimLsp.ServerOptions) => void;
   }
   namespace util {

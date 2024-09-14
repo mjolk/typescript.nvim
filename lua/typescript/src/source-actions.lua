@@ -10,12 +10,11 @@ local function __TS__ObjectAssign(target, ...)
     end
     return target
 end
-
 -- End of Lua Library inline imports
 local ____exports = {}
-local ____methods = require("typescript.types.methods")
+local ____methods = require("typescript.src.types.methods")
 local Methods = ____methods.Methods
-local ____utils = require("typescript.utils")
+local ____utils = require("typescript.src.utils")
 local debugLog = ____utils.debugLog
 local getClient = ____utils.getClient
 local SourceActions = SourceActions or ({})
@@ -46,23 +45,11 @@ local function makeCommand(sourceAction)
                 "received response:",
                 vim.inspect(res)
             )
-            local ____res__0_edit_6 = res[1]
-            if ____res__0_edit_6 ~= nil then
-                ____res__0_edit_6 = ____res__0_edit_6.edit
-            end
-            local ____res__0_edit_documentChanges_4 = ____res__0_edit_6
-            if ____res__0_edit_documentChanges_4 ~= nil then
-                ____res__0_edit_documentChanges_4 = ____res__0_edit_documentChanges_4.documentChanges
-            end
-            local ____res__0_edit_documentChanges__0_2 = ____res__0_edit_documentChanges_4
-            if ____res__0_edit_documentChanges__0_2 ~= nil then
-                ____res__0_edit_documentChanges__0_2 = ____res__0_edit_documentChanges__0_2[1]
-            end
-            local ____res__0_edit_documentChanges__0_edits_0 = ____res__0_edit_documentChanges__0_2
-            if ____res__0_edit_documentChanges__0_edits_0 ~= nil then
-                ____res__0_edit_documentChanges__0_edits_0 = ____res__0_edit_documentChanges__0_edits_0.edits
-            end
-            if ____res__0_edit_documentChanges__0_edits_0 == nil then
+            local ____opt_6 = res[1]
+            local ____opt_4 = ____opt_6 and ____opt_6.edit
+            local ____opt_2 = ____opt_4 and ____opt_4.documentChanges
+            local ____opt_0 = ____opt_2 and ____opt_2[1]
+            if (____opt_0 and ____opt_0.edits) == nil then
                 return
             end
             vim.lsp.util.apply_text_edits(res[1].edit.documentChanges[1].edits, bufnr, client.offset_encoding)

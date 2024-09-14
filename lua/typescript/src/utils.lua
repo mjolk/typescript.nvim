@@ -1,6 +1,6 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local ____config = require("typescript.config")
+local ____config = require("typescript.src.config")
 local config = ____config.config
 ____exports.debugLog = function(...)
     if not config.debug then
@@ -10,7 +10,7 @@ ____exports.debugLog = function(...)
 end
 ____exports.getClient = function(bufnr)
     for ____, client in pairs(vim.lsp.get_active_clients({bufnr = bufnr})) do
-        if client.name == "tsserver" then
+        if client.name == "ts_ls" then
             return client
         end
     end

@@ -10,19 +10,18 @@ local function __TS__ObjectAssign(target, ...)
     end
     return target
 end
-
 -- End of Lua Library inline imports
 local ____exports = {}
-local ____commands = require("typescript.commands")
+local ____commands = require("typescript.src.commands")
 local setupCommands = ____commands.setupCommands
-local ____config = require("typescript.config")
+local ____config = require("typescript.src.config")
 local config = ____config.config
-local ____handlers = require("typescript.handlers")
+local ____handlers = require("typescript.src.handlers")
 local renameHandler = ____handlers.renameHandler
-local ____methods = require("typescript.types.methods")
+local ____methods = require("typescript.src.types.methods")
 local TypescriptMethods = ____methods.TypescriptMethods
 local ____lspconfig = require("lspconfig")
-local tsserver = ____lspconfig.tsserver
+local ts_ls = ____lspconfig.ts_ls
 ____exports.setupLsp = function(overrides)
     local resolvedConfig = __TS__ObjectAssign({}, config, overrides or ({}))
     local ____resolvedConfig_server_0 = resolvedConfig.server
@@ -30,28 +29,19 @@ ____exports.setupLsp = function(overrides)
     local on_attach = ____resolvedConfig_server_0.on_attach
     local handlers = ____resolvedConfig_server_0.handlers
     resolvedConfig.server.on_init = function(client, initialize_result)
-        local ____on_init_result_1 = on_init
-        if ____on_init_result_1 ~= nil then
-            ____on_init_result_1 = ____on_init_result_1(client, initialize_result)
+        if on_init ~= nil then
+            on_init(client, initialize_result)
         end
     end
     resolvedConfig.server.on_attach = function(client, bufnr)
         if not config.disable_commands then
             setupCommands(bufnr)
         end
-        local ____on_attach_result_3 = on_attach
-        if ____on_attach_result_3 ~= nil then
-            ____on_attach_result_3 = ____on_attach_result_3(client, bufnr)
+        if on_attach ~= nil then
+            on_attach(client, bufnr)
         end
     end
-    local ____resolvedConfig_server_9 = resolvedConfig.server
-    local ____temp_7 = handlers or ({})
-    local ____TypescriptMethods_RENAME_8 = TypescriptMethods.RENAME
-    local ____handlers_TypescriptMethods_RENAME_5 = handlers
-    if ____handlers_TypescriptMethods_RENAME_5 ~= nil then
-        ____handlers_TypescriptMethods_RENAME_5 = ____handlers_TypescriptMethods_RENAME_5[TypescriptMethods.RENAME]
-    end
-    ____resolvedConfig_server_9.handlers = __TS__ObjectAssign({}, ____temp_7, {[____TypescriptMethods_RENAME_8] = ____handlers_TypescriptMethods_RENAME_5 or renameHandler})
-    tsserver.setup(resolvedConfig.server)
+    resolvedConfig.server.handlers = __TS__ObjectAssign({}, handlers or ({}), {[TypescriptMethods.RENAME] = handlers and handlers[TypescriptMethods.RENAME] or renameHandler})
+    ts_ls.setup(resolvedConfig.server)
 end
 return ____exports
