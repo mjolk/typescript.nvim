@@ -1,12 +1,12 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local ____config = require("typescript.src.config")
+local ____config = require("typescript.config")
 local config = ____config.config
-local ____go_2Dto_2Dsource_2Ddefinition = require("typescript.src.go-to-source-definition")
+local ____go_2Dto_2Dsource_2Ddefinition = require("typescript.go-to-source-definition")
 local goToSourceDefinition = ____go_2Dto_2Dsource_2Ddefinition.goToSourceDefinition
-local ____rename_2Dfile = require("typescript.src.rename-file")
+local ____rename_2Dfile = require("typescript.rename-file")
 local renameFile = ____rename_2Dfile.renameFile
-local ____source_2Dactions = require("typescript.src.source-actions")
+local ____source_2Dactions = require("typescript.source-actions")
 local addMissingImports = ____source_2Dactions.addMissingImports
 local fixAll = ____source_2Dactions.fixAll
 local organizeImports = ____source_2Dactions.organizeImports

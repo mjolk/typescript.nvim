@@ -12,13 +12,13 @@ local function __TS__ObjectAssign(target, ...)
 end
 -- End of Lua Library inline imports
 local ____exports = {}
-local ____commands = require("typescript.src.commands")
+local ____commands = require("typescript.commands")
 local setupCommands = ____commands.setupCommands
-local ____config = require("typescript.src.config")
+local ____config = require("typescript.config")
 local config = ____config.config
-local ____handlers = require("typescript.src.handlers")
+local ____handlers = require("typescript.handlers")
 local renameHandler = ____handlers.renameHandler
-local ____methods = require("typescript.src.types.methods")
+local ____methods = require("typescript.types.methods")
 local TypescriptMethods = ____methods.TypescriptMethods
 local ____lspconfig = require("lspconfig")
 local ts_ls = ____lspconfig.ts_ls

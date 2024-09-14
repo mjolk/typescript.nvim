@@ -1,6 +1,6 @@
 --[[ Generated with https://github.com/TypeScriptToLua/TypeScriptToLua ]]
 local ____exports = {}
-local ____config = require("typescript.src.config")
+local ____config = require("typescript.config")
 local config = ____config.config
 ____exports.debugLog = function(...)
     if not config.debug then

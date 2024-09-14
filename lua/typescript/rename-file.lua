@@ -129,11 +129,11 @@ do
 end
 -- End of Lua Library inline imports
 local ____exports = {}
-local ____execute_2Dcommand = require("typescript.src.execute-command")
+local ____execute_2Dcommand = require("typescript.execute-command")
 local executeCommand = ____execute_2Dcommand.executeCommand
-local ____workspace_2Dcommands = require("typescript.src.types.workspace-commands")
+local ____workspace_2Dcommands = require("typescript.types.workspace-commands")
 local WorkspaceCommands = ____workspace_2Dcommands.WorkspaceCommands
-local ____utils = require("typescript.src.utils")
+local ____utils = require("typescript.utils")
 local debugLog = ____utils.debugLog
 local ____lspconfig = require("lspconfig")
 local util = ____lspconfig.util
